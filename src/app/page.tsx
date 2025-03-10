@@ -1,101 +1,161 @@
-import Image from "next/image";
-
+import Hero from '@/components/global/common/hero'
+import { Section } from '@/components/global/common/section'
+import BestSellers from '@/components/global/sections/bestSellers'
+import InfoSection from '@/components/global/sections/infoSection'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardFooter } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
+import { CheckCircle } from 'lucide-react'
+import Image from 'next/image'
+const products = [
+  {
+    id: 1,
+    title: 'Walker 2.0 Black green',
+    price: 999,
+    oldPrice: 1290,
+    image: '/lamal.jpg',
+    featured: true,
+  },
+  { id: 2, title: 'Produkter i Fokus', special: true },
+  { id: 3, title: 'Nombre Zapatilla', price: 950, image: '/lamal.jpg' },
+  { id: 4, title: 'Nombre Zapatilla', price: 950, image: '/lamal.jpg' },
+  { id: 5, title: 'Nombre Zapatilla', price: 950, image: '/lamal.jpg' },
+  { id: 6, title: 'Nombre Zapatilla', price: 950, image: '/lamal.jpg' },
+  {
+    id: 7,
+    title: 'Mondrian - Styla med klass',
+    price: 1200,
+    image: '/lamal.jpg',
+    highlight: true,
+  },
+  { id: 8, title: 'Nombre Zapatilla', price: 950, image: '/lamal.jpg' },
+  { id: 9, title: 'Nombre Zapatilla', price: 950, image: '/lamal.jpg' },
+  { id: 10, title: 'Nombre Zapatilla', price: 950, image: '/lamal.jpg' },
+  { id: 11, title: 'Nombre Zapatilla', price: 950, image: '/lamal.jpg' },
+]
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div>
+      <Hero
+        image="https://picsum.photos/1000" // Ändra till en riktig bild
+        title="Välkommen till vår butik!"
+        subtitle="Upptäck våra bästsäljande fotbollströjor"
+      >
+        <button className="mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md">
+          Utforska Produkter
+        </button>
+      </Hero>
+      <InfoSection />
+    {/* <BestSellers /> */}  
+      <Section className={cn('p-6')}>
+        <div className="container mx-auto p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0    overflow-hidden">
+            {/* Stor Featured produkt */}
+            <div className="col-span-1 sm:col-span-2 lg:col-span-4 bg-gradient-to-b from-white to-gray-100 p-12 text-black relative border-b border-gray-200 flex flex-col lg:flex-row items-center lg:items-start shadow-lg rounded-lg">
+              {/* Vänster: Text */}
+              <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start justify-center text-center lg:text-left">
+                <h3 className="text-red-500 font-semibold uppercase tracking-wide">
+                  Erbjudande för månaden
+                </h3>
+                <h2 className="text-4xl font-extrabold">
+                  Walker 2.0{' '}
+                  <span className="text-gray-500 font-medium">Black Green</span>
+                </h2>
+                <p className="text-gray-600 mt-2">
+                  Supersnabba, lätta skor, perfekta för träning. Designade för
+                  komfort och stabilitet.
+                </p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+                <div className="mt-4">
+                  <span className="text-red-500 text-3xl font-bold">$999</span>
+                  <span className="text-gray-400 text-xl line-through ml-2">
+                    $1290
+                  </span>
+                </div>
+
+                <button className="mt-6 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-md">
+                  🛒 Köp Nu
+                </button>
+
+                {/* Countdown Timer */}
+                <div className="flex justify-center lg:justify-start gap-4 mt-6">
+                  <div className="text-center">
+                    <p className="text-2xl font-bold">01</p>
+                    <p className="text-gray-500 text-sm">DAG</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-2xl font-bold">23</p>
+                    <p className="text-gray-500 text-sm">TIMMAR</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-2xl font-bold">55</p>
+                    <p className="text-gray-500 text-sm">MIN</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-2xl font-bold">32</p>
+                    <p className="text-gray-500 text-sm">SEK</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Höger: Bild */}
+              <div className="w-full lg:w-1/2 relative h-80 flex justify-center items-center">
+                <div className="absolute w-72 h-40 bg-gray-200 rounded-full blur-lg opacity-50"></div>
+                <Image
+                  src="/lamal.jpg"
+                  alt="Walker 2.0"
+                  width={400}
+                  height={400}
+                  className="relative"
+                />
+              </div>
+            </div>
+
+            {/* "Produkter i fokus" sektionen */}
+            <div className="col-span-1 bg-black text-white p-6 flex items-center justify-center border-r border-b border-gray-300">
+              <h3 className="text-xl font-semibold">{products[1].title}</h3>
+            </div>
+
+            {/* Produktgrid */}
+            {products.slice(1).map((product, index) => (
+            <div
+            key={product.id}
+            className={`p-6 relative transform transition-all border border-gray-200 ${
+              product.highlight
+                ? 'col-span-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white'
+                : 'bg-gradient-to-b from-white to-gray-100'
+            }`}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {/* Bild med skugga */}
+            <div className="relative w-full h-40 flex justify-center items-center">
+              <div className="absolute w-40 h-20 bg-gray-300 rounded-full blur-lg opacity-30"></div>
+              <Image
+                src={product.image}
+                alt={product.title}
+                layout="fill"
+                objectFit="contain"
+                className="relative"
+              />
+            </div>
+          
+            {/* Produktnamn */}
+            <h3 className="text-lg font-semibold mt-4 text-center">{product.title}</h3>
+          
+            {/* Pris */}
+            {product.price && (
+              <p className="text-center text-red-500 text-xl font-bold">${product.price}</p>
+            )}
+          
+            {/* CTA-knapp */}
+            <Button className="mt-4 w-full font-semibold py-3 rounded-md">
+              🔥 Gå till produkt
+            </Button>
+          </div>
+          
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </Section>
     </div>
-  );
+  )
 }
